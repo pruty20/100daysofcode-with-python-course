@@ -1,6 +1,6 @@
 import pytest
 
-from fizzbuzz import fizzbuzz
+from fizzbuzz_yo import fizzbuzz_yo
 
 @pytest.mark.parametrize("arg, ret",[
     (1, 1),
@@ -19,6 +19,10 @@ from fizzbuzz import fizzbuzz
     (14, 14),
     (15, 'FizzBuzz'),
     (16, 16),
+    (1000, 'Buzz'),
+    (3000, 'FizzBuzz'),
+    (2001, 'Fizz'),
 ])
-def test_fizzbuzz(arg, ret):
-    assert fizzbuzz(arg) == ret
+
+def test_fizzbuzz_yo(arg, ret):
+    assert fizzbuzz_yo(arg) == ret

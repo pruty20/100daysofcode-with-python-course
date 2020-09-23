@@ -1,0 +1,14 @@
+
+pip freeze --> will show all the installed packages for the env
+pytest and pytest-cov have been installed as well
+
+just running pytest on venv will run all tests
+
+# will show the percentage of the code covered through tests 'guess' is a directory
+pytest --cov-report term-missing --cov='guess'
+
+# the dot can be used when we run it from the current directory
+pytest --cov-report term-missing --cov='.'
+
+#capfd --> (Capture Output Printed By Your Programm) --  will allow to see what is being prompted
+#to the user in console (feedback sent by the input)

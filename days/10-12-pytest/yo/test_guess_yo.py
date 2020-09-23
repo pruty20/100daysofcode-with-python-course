@@ -1,19 +1,15 @@
 from unittest.mock import patch
 import random
-
 import pytest
+from guess_yo import get_random_number, Game
 
-from guess import get_random_number, Game
-
-# patching this object, will always return 17 -- patching the module and the function to mock
 @patch.object(random, 'randint')
 def test_get_random_number(m):
     m.return_value = 17
     assert get_random_number() == 17
 
-
-@patch("builtins.input", side_effect=[11, '12', 'Bob', 12, 5,
-                                      -1, 21, 7, None])
+@patch("builtins.input", side_effect=[11, '12', 'Bob', 12, 5, -1, 21,
+                                      7, None])
 def test_guess(inp):
     game = Game()
     # good
@@ -27,7 +23,7 @@ def test_guess(inp):
         game.guess()
     # good
     assert game.guess() == 5
-    # out of range values
+    # out of range values -1, 21
     with pytest.raises(ValueError):
         game.guess()
     with pytest.raises(ValueError):
@@ -37,7 +33,6 @@ def test_guess(inp):
     # user hit enter
     with pytest.raises(ValueError):
         game.guess()
-
 
 def test_validate_guess(capfd):
     game = Game()
@@ -55,7 +50,6 @@ def test_validate_guess(capfd):
     out, _ = capfd.readouterr()
     assert out.rstrip() == '2 is correct!'
 
-
 @patch("builtins.input", side_effect=[4, 22, 9, 4, 6])
 def test_game_win(inp, capfd):
     game = Game()
@@ -65,15 +59,13 @@ def test_game_win(inp, capfd):
     assert game._win is True
 
     out = capfd.readouterr()[0]
-    expected = ['4 is too low', 'Number not in range',
-                '9 is too high', 'Already guessed',
-                '6 is correct!', 'It took you 3 guesses']
+    expected = ['4 is too low', 'Number not in range', '9 is too high',
+               'Already guessed', '6 is correct!', 'It took you 3 guesses']
 
-    output = [line.strip() for line
-              in out.split('\n') if line.strip()]
+    output = [line.strip() for line in
+              out.split('\n') if line.strip()]
     for line, exp in zip(output, expected):
         assert line == exp
-
 
 @patch("builtins.input", side_effect=[None, 5, 9, 14, 11, 12])
 def test_game_lose(inp, capfd):
