@@ -1,0 +1,5 @@
+
+source /Users/rpruteanu/Desktop/Python/PythonLearning/100daysofcode-with-python-course/venv/bin/activate
+
+
+jupyter notebook
