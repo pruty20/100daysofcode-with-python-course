@@ -1,4 +1,9 @@
 
+
+https://training.talkpython.fm/player/course/100-days-of-code-in-python/lecture/160709
+
+
+
 source /Users/rpruteanu/Desktop/Python/PythonLearning/100daysofcode-with-python-course/venv/bin/activate
 
 
