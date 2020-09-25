@@ -28,18 +28,22 @@ def convert_to_datetime(line="INFO 2014-07-03T23:27:51 supybot Shutdown complete
        returns:
        datetime(2014, 7, 3, 23, 27, 51)
     """
-    characters_to_replace = ("-", "T")
-    m = re.search("(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", line)
-    m = m.string()
-    m.replace(characters_to_replace, ", ")
-    print(m)
+    # regex = re.compile(r'\b\d{4}[-/]\d{2}[-/]\d{2}\s\d{2}:\d{2}:\d{2}\s[-+]\d{4}\b')
+    # n = regex.findall(line)
+    # m = re.search("(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", line)
+    # print(n)
 
 
 convert_to_datetime()
 
-# import re
-# m = re.search("(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", "INFO 2014-07-03T23:27:51 supybot Shutdown complete.")
-# print(m)
+import re
+m = re.findall("(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", "INFO 2014-07-03T23:27:51 supybot Shutdown complete.")
+char_to_replace = ["-", "T", ":"]
+n = m[0]
+for char in char_to_replace:
+    n = n.replace(char, ", ")
+
+print(n)
 
 
 def time_between_shutdowns(loglines):
