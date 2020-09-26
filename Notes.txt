@@ -4,6 +4,10 @@ https://training.talkpython.fm/player/course/100-days-of-code-in-python/lecture/
 
 
 
+git
+https://github.com/talkpython/100daysofcode-with-python-course
+
+
 source /Users/rpruteanu/Desktop/Python/PythonLearning/100daysofcode-with-python-course/venv/bin/activate
 
 

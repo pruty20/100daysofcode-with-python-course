@@ -16,11 +16,12 @@ Then use datetime.timedelta to calculate the time difference between them.
 You can assume the logs are sorted in ascending order.
 Check out the docstrings and the TESTS for more info.
 """
+from datetime import datetime
 from email import utils
 
 import re
 
-def convert_to_datetime(line="INFO 2014-07-03T23:27:51 supybot Shutdown complete"):
+def convert_to_datetime(line="INFO 2016-09-03T02:11:22 supybot Shutdown complete."):
     """TODO 1:
        Extract timestamp from logline and convert it to a datetime object.
        For example calling the function with:
@@ -28,22 +29,26 @@ def convert_to_datetime(line="INFO 2014-07-03T23:27:51 supybot Shutdown complete
        returns:
        datetime(2014, 7, 3, 23, 27, 51)
     """
-    # regex = re.compile(r'\b\d{4}[-/]\d{2}[-/]\d{2}\s\d{2}:\d{2}:\d{2}\s[-+]\d{4}\b')
-    # n = regex.findall(line)
-    # m = re.search("(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", line)
-    # print(n)
+    import re
+    m = re.findall("(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", line)
+    char_to_replace = ["-", "T", ":"]
+    n = m[0]
+    for char in char_to_replace:
+        n = n.replace(char, ", ")
+        list_str = n.split(",")
+
+    list_num = []
+    for number in list_str:
+        list_num.append(int(number))
+
+    date_yo = datetime(list_num[0], list_num[1], list_num[2],
+                       list_num[3], list_num[4], list_num[5])
+    return date_yo
 
 
 convert_to_datetime()
 
-import re
-m = re.findall("(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", "INFO 2014-07-03T23:27:51 supybot Shutdown complete.")
-char_to_replace = ["-", "T", ":"]
-n = m[0]
-for char in char_to_replace:
-    n = n.replace(char, ", ")
 
-print(n)
 
 
 def time_between_shutdowns(loglines):
