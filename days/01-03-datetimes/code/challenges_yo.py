@@ -46,15 +46,23 @@ def convert_to_datetime(line="INFO 2016-09-03T02:11:22 supybot Shutdown complete
     return date_yo
 
 
-convert_to_datetime()
+# convert_to_datetime()
+
+loglines = """ERROR 2014-07-03T23:24:31 supybot Invalid user dictionary file, resetting to empty.
+ERROR 2014-07-03T23:24:31 supybot Exact error: IOError: [Errno 2] No such file or directory: 'conf/users.conf'
+ERROR 2014-07-03T23:24:31 supybot Invalid channel database, resetting to empty."""
 
 
-
-
-def time_between_shutdowns(loglines):
+def time_between_shutdowns(loglines=loglines):
     """TODO 2:
        Extract shutdown events ("Shutdown initiated") from loglines and
        calculate the timedelta between the first and last one.
        Return this datetime.timedelta object.
     """
-    pass
+    print(loglines)
+
+
+time_between_shutdowns()
+
+
+
