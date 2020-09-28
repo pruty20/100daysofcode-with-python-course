@@ -29,40 +29,63 @@ def convert_to_datetime(line="INFO 2016-09-03T02:11:22 supybot Shutdown complete
        returns:
        datetime(2014, 7, 3, 23, 27, 51)
     """
-    import re
-    m = re.findall("(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", line)
-    char_to_replace = ["-", "T", ":"]
-    n = m[0]
-    for char in char_to_replace:
-        n = n.replace(char, ", ")
-        list_str = n.split(",")
+    # # THIS WAS MY SOLUTION
+    # import re
+    # m = re.findall("(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", line)
+    # char_to_replace = ["-", "T", ":"]
+    # n = m[0]
+    # for char in char_to_replace:
+    #     n = n.replace(char, ", ")
+    #     list_str = n.split(",")
+    #
+    # list_num = []
+    # for number in list_str:
+    #     list_num.append(int(number))
+    #
+    # date_yo = datetime(list_num[0], list_num[1], list_num[2],
+    #                    list_num[3], list_num[4], list_num[5])
+    # return date_yo
+    timestamp = line.split()[1]
+    date_str = '%Y-%m-%dT%H:%M:%S'
+    print(f"Printing from first function: {datetime.strptime(timestamp, date_str)}")
+    return datetime.strptime(timestamp, date_str)
 
-    list_num = []
-    for number in list_str:
-        list_num.append(int(number))
+convert_to_datetime()
 
-    date_yo = datetime(list_num[0], list_num[1], list_num[2],
-                       list_num[3], list_num[4], list_num[5])
-    return date_yo
-
-
-# convert_to_datetime()
 
 loglines = """ERROR 2014-07-03T23:24:31 supybot Invalid user dictionary file, resetting to empty.
 ERROR 2014-07-03T23:24:31 supybot Exact error: IOError: [Errno 2] No such file or directory: 'conf/users.conf'
-ERROR 2014-07-03T23:24:31 supybot Invalid channel database, resetting to empty."""
+ERROR 2014-07-03T23:24:31 supybot Invalid channel database, resetting to empty.
+INFO 2014-07-03T23:31:22 supybot Shutdown complete.
+INFO 2014-07-03T23:27:51 supybot Shutdown initiated.
+INFO 2014-07-03T23:31:22 supybot Shutdown initiated.
+INFO 2014-07-03T23:31:22 supybot Shutdown complete."""
+loglines = loglines.split("\n")
 
 
-def time_between_shutdowns(loglines=loglines):
+def time_between_shutdowns(loglines):
     """TODO 2:
        Extract shutdown events ("Shutdown initiated") from loglines and
        calculate the timedelta between the first and last one.
        Return this datetime.timedelta object.
     """
-    print(loglines)
+    # # My Solution
+    # list_output = []
+    # for el in loglines:
+    #     first_entry_index = el.find("Shutdown initiated")
+    #     if first_entry_index > 0:
+    #         list_output.append(el)
+    # first_entry = convert_to_datetime(list_output[0])
+    # last_entry = convert_to_datetime(list_output[1])
+    # diff = last_entry - first_entry
+    # return diff
+    SHUTDOWN_EVENT = 'Shutdown initiated'
+    shutdown_entries = [line for line in loglines if SHUTDOWN_EVENT in line]
+    shutdown_times = [convert_to_datetime(event) for event in shutdown_entries]
+    print(shutdown_times)
+    return max(shutdown_times) - min(shutdown_times)
 
-
-time_between_shutdowns()
+time_between_shutdowns(loglines)
 
 
 
