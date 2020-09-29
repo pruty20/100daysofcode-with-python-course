@@ -47,7 +47,6 @@ def convert_to_datetime(line="INFO 2016-09-03T02:11:22 supybot Shutdown complete
     # return date_yo
     timestamp = line.split()[1]
     date_str = '%Y-%m-%dT%H:%M:%S'
-    print(f"Printing from first function: {datetime.strptime(timestamp, date_str)}")
     return datetime.strptime(timestamp, date_str)
 
 convert_to_datetime()
@@ -82,7 +81,6 @@ def time_between_shutdowns(loglines):
     SHUTDOWN_EVENT = 'Shutdown initiated'
     shutdown_entries = [line for line in loglines if SHUTDOWN_EVENT in line]
     shutdown_times = [convert_to_datetime(event) for event in shutdown_entries]
-    print(shutdown_times)
     return max(shutdown_times) - min(shutdown_times)
 
 time_between_shutdowns(loglines)
