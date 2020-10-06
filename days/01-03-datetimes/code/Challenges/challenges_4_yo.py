@@ -23,6 +23,7 @@ noww = datetime.now()
 
 
 while now + timedelta(seconds=5) > datetime.now():
+    print(datetime.now())
 
 
 
