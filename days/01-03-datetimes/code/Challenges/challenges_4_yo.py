@@ -12,3 +12,9 @@ We encourage you to pull request your work via PyBites Code Challenge #52
 (https://codechalleng.es/challenges/)
  Have fun!
 """
+from datetime import datetime, timedelta
+
+print(datetime.now())
+
+t_delta = timedelta(days=2, hours=2, seconds=3)
+print(t_delta)
