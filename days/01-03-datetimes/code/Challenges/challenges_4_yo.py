@@ -13,8 +13,36 @@ We encourage you to pull request your work via PyBites Code Challenge #52
  Have fun!
 """
 from datetime import datetime, timedelta
+import time
 
-print(datetime.now())
+counter = 0
+now = datetime.now()
+noww = datetime.now()
 
-t_delta = timedelta(days=2, hours=2, seconds=3)
-print(t_delta)
+
+
+
+while now + timedelta(seconds=5) > datetime.now():
+
+
+
+
+
+
+
+
+
+
+
+
+# while counter < 20:
+#     # start = start + timedelta(seconds=1)
+#     counter += 1
+
+
+#
+# print(datetime.now())
+# print(datetime.now() + timedelta(seconds=100))
+
+# t_delta = timedelta(days=2, hours=2, seconds=3)
+# print(t_delta)
