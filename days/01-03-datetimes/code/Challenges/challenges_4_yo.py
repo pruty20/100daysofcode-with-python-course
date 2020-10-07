@@ -13,37 +13,18 @@ We encourage you to pull request your work via PyBites Code Challenge #52
  Have fun!
 """
 from datetime import datetime, timedelta
-import time
 
-counter = 0
-now = datetime.now()
-noww = datetime.now()
+time_interval = timedelta(seconds=5)
 
+time_now = datetime.now()
+time_end = time_now + time_interval
 
+print(f"Start: {time_now}")
+print(f"Stop: {time_end}")
 
-
-while now + timedelta(seconds=5) > datetime.now():
-    print(datetime.now())
-
-
-
-
-
-
-
-
-
-
-
-
-# while counter < 20:
-#     # start = start + timedelta(seconds=1)
-#     counter += 1
-
-
-#
-# print(datetime.now())
-# print(datetime.now() + timedelta(seconds=100))
-
-# t_delta = timedelta(days=2, hours=2, seconds=3)
-# print(t_delta)
+stop = False
+while stop == False:
+    time_now = datetime.now()
+    if time_now >= time_end:
+        stop = True
+        print(f"Time is up, time is: {datetime.now()}")
