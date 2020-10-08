@@ -3,7 +3,6 @@ from collections import namedtuple, defaultdict
 from urllib.request import urlretrieve
 from collections import Counter
 
-
 movie_data = 'https://raw.githubusercontent.com/pybites/challenges/solutions/13/movie_metadata.csv'
 movies_csv = 'movies.csv'
 

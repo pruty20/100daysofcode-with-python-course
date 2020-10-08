@@ -9,15 +9,17 @@ scrambled it to make a type specimen book. It has survived not only five centuri
 electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
 Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
 PageMaker including versions of Lorem Ipsum""".split()
-print(words[:5])
+# print(words[:5])
 
 
 # Getting the most top 5 most repeated words
 common_words = {}
+
 for word in words:
     if word not in common_words:
         common_words[word] = 0
     common_words[word] += 1
+
 
 # sort dict by values descending and slice first 5 to get most common
 for k, v in sorted(common_words.items(),

@@ -2,7 +2,6 @@
 Great at building a nested data structure
 -- The value gets initialised before appending to it.
 """
-
 from collections import defaultdict
 
 users = {'bob': 'coder'}

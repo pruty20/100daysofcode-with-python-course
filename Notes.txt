@@ -1,3 +1,7 @@
+Left on Collections Practice:
+https://github.com/talkpython/100daysofcode-with-python-course/tree/master/days/04-06-collections
+
+
 https://training.talkpython.fm/player/course/100-days-of-code-in-python/lecture/160709
 
 git

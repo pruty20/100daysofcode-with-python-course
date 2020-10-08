@@ -17,7 +17,12 @@ def insert_and_delete(ds):
         ds.insert(index, index)
 
 
+
+
 ## this will work only using Jupyter Workbook since this is a magic method for it
 # %timeit insert_and_delete(lst)
 # %timeit insert_and_delete(deq)
+
+# insert_and_delete(lst)
+# insert_and_delete(deq)
 
