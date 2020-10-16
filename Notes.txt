@@ -1,18 +1,20 @@
-Left on Collections Practice:
-https://github.com/talkpython/100daysofcode-with-python-course/tree/master/days/04-06-collections
+Left on:
+https://training.talkpython.fm/player/course/100-days-of-code-in-python/lecture/160804
 
 
-https://training.talkpython.fm/player/course/100-days-of-code-in-python/lecture/160709
+
 
 git
 https://github.com/talkpython/100daysofcode-with-python-course
+
 
 #Challenges
 https://codechalleng.es/bites/
 https://github.com/pybites/challenges/blob/master/README.md
 
-
+## Activate virtual env called "venv"
 source /Users/rpruteanu/Desktop/Python/PythonLearning/100daysofcode-with-python-course/venv/bin/activate
 
 
+## launch jupyter using command line
 jupyter notebook
