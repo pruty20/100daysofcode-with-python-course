@@ -18,12 +18,19 @@
 # for char in 'string':
 #     print(char)
 
-### Itertools - Cycle
-import itertools, sys, time
+# ### Itertools - Cycle
+# import itertools, sys, time
+#
+# symbols = itertools.cycle('-\|/')
+#
+# while True:
+#     sys.stdout.write('\r' + next(symbols)) # '\r' -- will make sure that the iteritems will be displayed on the same line
+#     sys.stdout.flush()
+#     time.sleep(0.3)
 
-symbols = itertools.cycle('-\|/')
-
-while True:
-    sys.stdout.write('\r' + next(symbols)) # '\r' -- will make sure that the iteritems will be displayed on the same line
-    sys.stdout.flush()
-    time.sleep(0.3)
+# ### Itertools - Product
+# from itertools import product
+#
+# # will return cartezian product (every possible combination)
+# for letter in product("razvan", repeat=2):
+#     print(letter)
