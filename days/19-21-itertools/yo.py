@@ -35,18 +35,24 @@
 # for letter in product("razvan", repeat=2):
 #     print(letter)
 
-### Itertools - Combinations and Permutations
-from itertools import permutations, combinations
-
-friends = 'mike bob julian'.split()
-
-print(list(combinations(friends, 2)))
-
-print(list(permutations(friends, 2)))
-
-
+# ### Itertools - Combinations and Permutations
+# from itertools import permutations, combinations
+#
+# friends = 'mike bob julian'.split()
+#
+# print(list(combinations(friends, 2)))
+#
+# print(list(permutations(friends, 2)))
 
 
+
+# Exercise for traffic lights
+import itertools, time
+
+lights = itertools.cycle(['red', 'yellow',  'green'])
+for el in lights:
+    print(el)
+    time.sleep(3)
 
 
 
