@@ -45,14 +45,53 @@
 # print(list(permutations(friends, 2)))
 
 
+# # Exercise for traffic lights -- mine
+"""
+Day N+1: Create a Traffic Lights script
 
-# Exercise for traffic lights
-import itertools, time
+Yep that's right! For your second day, use itertools to create a script that simulates traffic lights!
 
-lights = itertools.cycle(['red', 'yellow',  'green'])
-for el in lights:
-    print(el)
-    time.sleep(3)
+The idea is to perhaps... cycle (hint hint!) through the different colours of a set of traffic lights -
+red, amber and green - printing the name of the colour every time the cycle occurs.
+
+For bonus points: traffic lights normally cycle between green and red based on traffic levels so you never know exactly
+when the change will happen. This is a great chance to throw some randomness into your script.
+"""
+# import itertools, time
+#
+# lights = itertools.cycle(['red', 'yellow',  'green'])
+# for el in lights:
+#     print(el)
+#     time.sleep(3)
+
+
+# # Solution
+# from time import sleep
+# import itertools, random
+#
+# colours = 'Red Amber Green'.split()
+# rotation = itertools.cycle(colours)
+#
+# def rg_time():
+#     return random.randint(3, 7)
+#
+# def light_rotation(rotation):
+#     for colour in rotation:
+#         if colour == 'Amber':
+#             print(f"Caution! The light is {colour}")
+#             sleep(rg_time())
+#         elif colour == 'Red':
+#             print(f"STOP! The light is {colour}")
+#             sleep(rg_time())
+#         else:
+#             print(f"GO! The light is {colour}")
+#             sleep(3)
+
+
+if __name__ == '__main__':
+    light_rotation(rotation)
+
+
 
 
 
