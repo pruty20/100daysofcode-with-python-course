@@ -116,22 +116,120 @@ For missing data use dashes (-). After the fix Bert should see this output:
 ('Kim', '-', '-')
 ('Andre', '-', '-')
 """
-from itertools import permutations, combinations, product
+# from itertools import zip_longest
+#
+# names = 'Tim Bob Julian Carmen Sofia Mike Kim Andre'.split()
+# locations = 'DE ES AUS NL BR US'.split()
+# confirmed = [False, True, True, False, True]
+#
+#
+# def get_attendees():
+#     for participant in zip_longest(names, locations, confirmed, fillvalue='-'):
+#         print(participant)
+#
+#
+# if __name__ == '__main__':
+#     get_attendees()
 
-names = 'Tim Bob Julian Carmen Sofia Mike Kim Andre'.split()
-locations = 'DE ES AUS NL BR US'.split()
-confirmed = [False, True, True, False, True]
 
+"""
+https://codechalleng.es/bites/17/
+Write a function called friends_teams that takes a list of friends, 
+a team_size (type int, default=2) and order_does_matter (type bool, default False).
 
-def get_attendees():
-    for participant in zip(names, locations, confirmed):
-        print(participant)
+Return all possible teams. Hint: if order matters (order_does_matter=True), 
+the number of teams would be greater.
+"""
+
+# TESTS:
+# import pytest
+#
+# from friends import friends_teams
+#
+# friends = 'Bob Dante Julian Martin'.split()
+#
+#
+# @pytest.mark.parametrize('test_input,expected', [
+#     (('Bob', 'Dante'), True),
+#     (('Bob', 'Julian'), True),
+#     (('Bob', 'Martin'), True),
+#     (('Dante', 'Julian'), True),
+#     (('Dante', 'Martin'), True),
+#     (('Julian', 'Martin'), True),
+#     # order does not matter
+#     (('Dante', 'Bob'), False),
+#     (('Julian', 'Bob'), False),
+#     (('Martin', 'Bob'), False),
+#     (('Julian', 'Dante'), False),
+#     (('Martin', 'Dante'), False),
+#     (('Martin', 'Julian'), False),
+#     # not with self
+#     (('Julian', 'Julian'), False),
+# ])
+# def test_team_of_two_order_does_not_matter(test_input, expected):
+#     """First test lists all combos"""
+#     combos = list(friends_teams(friends, team_size=2, order_does_matter=False))
+#     assert len(combos) == 6
+#     if expected:
+#         assert test_input in combos
+#     else:
+#         assert test_input not in combos
+#
+#
+# @pytest.mark.parametrize('test_input,expected', [
+#     (('Bob', 'Dante'), True),
+#     (('Dante', 'Julian'), True),
+#     (('Dante', 'Martin'), True),
+#     # order does matter
+#     (('Dante', 'Bob'), True),
+#     (('Julian', 'Dante'), True),
+#     (('Martin', 'Dante'), True),
+# ])
+# def test_team_of_two_order_does_matter(test_input, expected):
+#     """From here on just test a subset of combos"""
+#     combos = list(friends_teams(friends, team_size=2, order_does_matter=True))
+#     assert len(combos) == 12
+#     assert test_input in combos
+#
+#
+# @pytest.mark.parametrize('test_input,expected', [
+#     (('Bob', 'Dante', 'Julian'), True),
+#     (('Bob', 'Dante', 'Martin'), True),
+#     (('Bob', 'Julian', 'Martin'), True),
+#     (('Dante', 'Julian', 'Martin'), True),
+#     # order does not matter
+#     (('Dante', 'Bob', 'Martin'), False),
+#     (('Julian', 'Martin', 'Dante'), False),
+#     # no one goes twice
+#     (('Dante', 'Dante', 'Martin'), False),
+# ])
+# def test_team_of_three_order_does_not_matter(test_input, expected):
+#     combos = list(friends_teams(friends, team_size=3, order_does_matter=False))
+#     assert len(combos) == 4
+#     if expected:
+#         assert test_input in combos
+#     else:
+#         assert test_input not in combos
+#
+#
+# @pytest.mark.parametrize('test_input,expected', [
+#     (('Bob', 'Dante', 'Julian'), True),
+#     (('Bob', 'Dante', 'Martin'), True),
+#     (('Bob', 'Julian', 'Martin'), True),
+#     (('Dante', 'Julian', 'Martin'), True),
+#     # order does matter
+#     (('Dante', 'Bob', 'Martin'), True),
+#     (('Julian', 'Martin', 'Dante'), True),
+# ])
+# def test_team_of_three_order_does_matter(test_input, expected):
+#     combos = list(friends_teams(friends, team_size=3, order_does_matter=True))
+#     assert len(combos) == 24
+#     assert test_input in combos
+
 
 
 if __name__ == '__main__':
-    get_attendees()
-
-
+    pass
 
 
 
