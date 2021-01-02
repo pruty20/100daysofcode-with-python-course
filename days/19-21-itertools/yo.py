@@ -150,6 +150,32 @@ the number of teams would be greater.
 #         func = itertools.combinations
 #     return func(friends, team_size)
 
+# ex = friends_teams(['Bob', 'Dante', 'Julian'], team_size=2, order_does_matter=True)
+
+# for el in ex:
+#     print(el)
+
+
+
+"""
+https://codechalleng.es/bites/65/
+Get all valid dictionary words for a draw of letters 
+
+This Bite focusses on the use of itertools. 
+To that extend you complete get_possible_dict_words and _get_permutations_draw to get all valid dictionary words 
+for a random draw of 7 letters.
+
+This is fed into the tests that calculate the word with maximum value 
+(work previously done for Bite 3) https://codechalleng.es/bites/3/ and there you go: you have a Scrabble cheat tool 
+(Scrabble fans, pay attention or maybe skip this Bite!).
+
+For example a draw of letters G, A, R, Y, T, E, V would give highest valued word GARVEY (13 points).
+
+This Bite is adapted from PyBites Code Challenge 02: Word Values Part II - A Simple Game. 
+https://codechalleng.es/challenges/2/ 
+Check it out if you want to code up the complete game including the user interaction part.
+"""
+
 
 if __name__ == '__main__':
     pass

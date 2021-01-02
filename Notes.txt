@@ -1,5 +1,7 @@
 Left on:
 
+https://codechalleng.es/challenges/1/
+
 https://training.talkpython.fm/player/course/100-days-of-code-in-python/lecture/160806
 https://github.com/talkpython/100daysofcode-with-python-course/tree/master/days/19-21-itertools
 https://codechalleng.es/bites/65/
