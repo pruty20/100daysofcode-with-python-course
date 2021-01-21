@@ -12,7 +12,7 @@ def get_random_number():
 class Game:
     """Number guess class, make it callable to initiate game"""
 
-    def __init__(self):
+    def __init__(self):  # constructor
         """Init _guesses, _answer, _win to set(), get_random_number(), False"""
         self._guesses = set()
         self._answer = get_random_number()
@@ -84,5 +84,5 @@ class Game:
 
 
 if __name__ == '__main__':
-    game = Game()
-    game()
+    game = Game()  # instantiate the class
+    game()  # and call the object as it was a function
