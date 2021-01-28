@@ -18,7 +18,7 @@ from fizzbuzz import fizzbuzz
     (13, 13),
     (14, 14),
     (15, 'Fizz Buzz'),
-    (16, 16),
+    (16, 16)
 ])
 def test_fizzbuzz(arg, ret):
     assert fizzbuzz(arg) == ret
