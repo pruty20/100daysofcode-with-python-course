@@ -4,6 +4,9 @@ import itertools
 import random
 import re
 import string
+from timeit import Timer
+from timeit import timeit
+
 import requests
 
 names = 'pybites mike bob julian tim sara guido'.split()
@@ -93,7 +96,34 @@ def create_select_options_gen(options=options):
 
 # convert the generator to a list
 generator_list = list(create_select_options_gen())
-pp(generator_list)
+# pp(generator_list)
+
+
+"""
+List vs generator performance
+"""
+# list
+def leap_year_lst(n=1000000):
+    leap_years = []
+    for year in range(1, n+1):
+        if calendar.isleap(year):
+            leap_years.append(year)
+    return leap_years
+
+# generator
+def leap_year_gen(n=1000000):
+    for year in range(1, n+1):
+        if calendar.isleap(year):
+            yield year
+
+"""
+just open the python console and copy all the code for both functions and import
+and run for comparison
+
+%timeit -n1 leap_year_lst()
+
+%timeit -n1 leap_year_gen()
+"""
 
 
 

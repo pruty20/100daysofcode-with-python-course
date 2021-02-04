@@ -17,7 +17,7 @@ def game_loop():
         Creature('Toad', 1),
         Creature('Tiger', 12),
         Dragon('Black Dragon', 50, scaliness=2, breaths_fire=False),
-        Wizard('Evil wizard', 1000+)]}
+        Wizard('Evil wizard', 1000)]}
 
     hero = Wizard('Gandolf', 75)
 
