@@ -1,3 +1,30 @@
+"""
+Iteration refresher
+"""
+
+number = list(range(1, 11))
+
+# one way to demonstrate that the number list is iterable
+print('__iter__' in dir(number))
+
+for i in number:
+    print(i)
+
+# one other way to check if an element is iterable, is to use next()
+#  when it finishes to iterate it will throw an exception stopIteration
+it = iter('string')
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+# print(next(it)) ## This will throw StopIteration since the iteration is done
+#  when running a for loop instead it will handle the exception
+
+
+
+
 ### Iteration Refresher
 
 # number = list(range(1, 11))
