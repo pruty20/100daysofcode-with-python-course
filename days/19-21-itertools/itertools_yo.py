@@ -5,71 +5,95 @@ Iteration refresher
 number = list(range(1, 11))
 
 # one way to demonstrate that the number list is iterable
-print('__iter__' in dir(number))
+# print('__iter__' in dir(number))
 
-for i in number:
-    print(i)
+# for i in number:
+#     print(i)
 
 # one other way to check if an element is iterable, is to use next()
 #  when it finishes to iterate it will throw an exception stopIteration
 it = iter('string')
-print(next(it))
-print(next(it))
-print(next(it))
-print(next(it))
-print(next(it))
-print(next(it))
+# print(next(it))
+# print(next(it))
+# print(next(it))
+# print(next(it))
+# print(next(it))
+# print(next(it))
 # print(next(it)) ## This will throw StopIteration since the iteration is done
 #  when running a for loop instead it will handle the exception
 
+"""
+itertool.cycle
+"""
+import itertools
+import sys
+import time
+from itertools import product
 
+symbols = itertools.cycle('-\/')
 
-
-### Iteration Refresher
-
-# number = list(range(1, 11))
-
-## Running in the shell the fol. will dem. that it is an iterable:
-# print('__iter__' in dir('number'))
-
-# it = iter('string')
-# print(next(it))
-# print(next(it))
-# print(next(it))
-# print(next(it))
-# print(next(it))
-# print(next(it))
-# print(next(it))
-
-## This will not throw and error when it gets to the end
-# for char in 'string':
-#     print(char)
-
-# ### Itertools - Cycle
-# import itertools, sys, time
-#
-# symbols = itertools.cycle('-\|/')
-#
 # while True:
-#     sys.stdout.write('\r' + next(symbols)) # '\r' -- will make sure that the iteritems will be displayed on the same line/row/position
-#     sys.stdout.flush()
-#     time.sleep(0.3)
+#     sys.stdout.write('\r' + next(symbols))  # \r is gonna negate putting the output on a new line
+#     sys.stdout.flush()  # will force what appears on the screen to flush
+#     time.sleep(0.15)
 
-# ### Itertools - Product
-# from itertools import product
-#
-# # will return cartesian product (every possible combination)
-# for letter in product("razvan", repeat=3):
+"""
+itertools.product -- every possible combination, repeat allows you to add more combinations
+"""
+# for letter in product("julian", repeat=2):
 #     print(letter)
 
-# ### Itertools - Combinations and Permutations
-# from itertools import permutations, combinations
-#
-# friends = 'mike bob julian'.split()
-#
-# print(list(combinations(friends, 2)))
-#
+"""
+combinations and permutations
+"""
+from itertools import permutations, combinations
+# from itertools import combinations
+
+friends = 'mike bob julian'.split()
+# print(list(combinations(friends, 2)))  # combinations are not being ordered
+
+# permutations will also include the same elements in all possible order that they can be, also being ordered
 # print(list(permutations(friends, 2)))
+
+"""
+Day N+1: Create a Traffic Lights script
+
+Yep that's right! For your second day, use itertools to create a script that simulates traffic lights!
+
+The idea is to perhaps... cycle (hint hint!) through the different colours of a set of traffic lights -
+red, amber and green - printing the name of the colour every time the cycle occurs.
+
+For bonus points: traffic lights normally cycle between green and red based on traffic levels so you never know exactly
+when the change will happen. This is a great chance to throw some randomness into your script.
+"""
+from time import sleep
+import itertools
+import random
+
+colours = 'Red Green Amber'.split()
+rotation = itertools.cycle(colours)
+
+def rg_timer():
+    return random.randint(3, 7)
+
+def light_rotation(rotation):
+    for colour in rotation:
+        if colour == 'Amber':
+            print(f'Caution! The light is {colour}')
+            sleep(3)
+        elif colour == 'Red':
+            print(f'Stop! The light is {colour}')
+            sleep(rg_timer())
+        else:
+            print(f'Go! The light is {colour}')
+            sleep(rg_timer())
+
+light_rotation(rotation)
+
+
+
+
+
 
 
 # # Exercise for traffic lights -- mine
