@@ -4,20 +4,20 @@ decorators -- add behaviour to a function -- behaviour can be added before and a
 from functools import wraps
 import time
 
-def mydecorator(function):
-    @wraps(function)
-    def wrapper(*args, **kwargs):
-        # do something before the original function is called
-        # call the passed in function
-        result = function(*args, **kwargs)
-        # do something after the original function
-        return result
-    # return wrapper = decorated function
-    return wrapper
-
-@mydecorator
-def my_function(args):
-    pass
+# def mydecorator(function):
+#     @wraps(function)
+#     def wrapper(*args, **kwargs):
+#         # do something before the original function is called
+#         # call the passed in function
+#         result = function(*args, **kwargs)
+#         # do something after the original function
+#         return result
+#     # return wrapper = decorated function
+#     return wrapper
+#
+# @mydecorator
+# def my_function(args):
+#     pass
 
 # non-common way of using a decorator -->
 # def my_function(args):
@@ -44,23 +44,77 @@ About args and kwargs functions
 """
 using decorators
 """
-def show_args(function):
-    @wraps(function)
+# def show_args(function):
+#     @wraps(function)
+#     def wrapper(*args, **kwargs):
+#         # doing something before the original function is called
+#         print('hi from decorator - args:')
+#         print(args)
+#         result = function(*args, **kwargs)
+#         # doing something after the original function
+#         print('hi again from decorator - kwargs:')
+#         print(kwargs)
+#         return result
+#     # return wrapper as a decorated function
+#     return wrapper
+#
+# @show_args
+# def get_profile(name, active=True, *sports, **awards):
+#     print('\n\thi from get_profile function\n')
+#
+# get_profile('bob', True, 'basketball', 'soccer',
+#             pythonista='special honor of the community', topcoder='2017 code camp')
+
+"""
+Writting a timeit decorator
+"""
+def timeit(func):
+    """Decorator to time a function"""
+    @wraps(func)
     def wrapper(*args, **kwargs):
-        print('hi from decorator - args:')
-        print(args)
-        result = function(*args, **kwargs)
-        print('hi again from decorator - kwargs:')
-        print(kwargs)
-        return result
-    # return wrapper as a decorated function
-    return wrapper
 
-@show_args
-def get_profile(name, active=True, *sports, **awards):
-    print('\n\thi from get_profile function\n')
+        # before calling the decorated function
+        print('== starting timer')
+        start = time.time()
 
-get_profile('bob', True, 'basketball', 'soccer',
-            pythonista='special honor of the community', topcoder='2017 code camp')
+        # call the decorated function
+        func(*args, **kwargs)
+
+        # after calling the decorated function
+        end = time.time()
+        print(f'== {func.__name__} took {int(end-start)} seconds to complete')
+
+    return wrapper()
+
+@timeit
+def generate_report():
+    """Function to generate revenue report"""
+    time.sleep(2)
+    print('(actual function) Done, report links...')
+
+
+##  for some reason the generate_report() is called by default without calling the actual function
+# generate_report()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
