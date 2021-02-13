@@ -86,15 +86,49 @@ def timeit(func):
 
     return wrapper()
 
-@timeit
-def generate_report():
-    """Function to generate revenue report"""
-    time.sleep(2)
-    print('(actual function) Done, report links...')
+# @timeit
+# def generate_report():
+#     """Function to generate revenue report"""
+#     time.sleep(2)
+#     print('(actual function) Done, report links...')
 
 
 ##  for some reason the generate_report() is called by default without calling the actual function
 # generate_report()
+
+"""
+stacking decorators --> bellow code will throw an exception -- need to investigate when time
+"""
+def print_args(func):
+    """Decorator to print function arguments"""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+
+        # before
+        print()
+        print('*** args:')
+        for arg in args:
+            print(f'- {arg}')
+
+        print('**** kwargs:')
+        for k, v in kwargs.items():
+            print(f'- {k}: {v}')
+        print()
+
+        # call func
+        func(*args, **kwargs)
+    return wrapper
+
+# @timeit
+# @print_args
+# def generate_report(*months, **parameters):
+#     time.sleep(2)
+#     print('(actual function) Done, report links...')
+
+# parameters = dict(split_geos=True, include_suborgs=False, tax_rate=3)
+#
+#
+# generate_report('October', 'November', 'December', **parameters)
 
 
 
