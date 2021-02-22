@@ -37,6 +37,7 @@ text = "Awesome, I am doing the #100DaysOfCode challenge"
 
 """
 Compiling regexes with re.VERBOSE -- which ignores spaces and comments
+-- we will return titles composed of 2 words
 """
 movies = '''1. Citizen Kane (1941)
 2. The Godfather (1972)
@@ -67,5 +68,22 @@ pat = re.compile(r'''
                     $             # end of string
                 ''', re.VERBOSE)
 
-for movie in movies:
-    print(movie, pat.match(movie))
+# for movie in movies:
+#     print(movie, pat.match(movie))
+
+"""
+using re.sub for string replacing
+"""
+text = '''Awesome, I am doing #100DaysOfCode, #200DaysOfDjango, and of course #365DaysOfPyBites'''
+# I want all challenges to be 100 days
+# print(re.sub(r'\d+', '100', text))
+
+# Or what if I want to change all the #nDaysOf... to #nDaysOfPython?
+# \d --> one or more digits
+# \w --> one or more characters
+# \1 --> will hold the place for the (#\d+DaysOf)
+print(re.sub(r'(#\d+DaysOf)\w+', r'\1Python', text))
+
+"""
+regex101.com to experiment regexes
+"""
