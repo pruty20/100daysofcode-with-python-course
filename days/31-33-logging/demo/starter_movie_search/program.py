@@ -3,6 +3,7 @@ import logbook
 import api
 import requests.exceptions
 
+app_log = logbook.Logger('App')
 
 def main():
     keyword = input('Keyword of title search: ')
@@ -12,12 +13,19 @@ def main():
         print(f'There are {len(results)} movies found.')
         for r in results:
             print(f"{r.title} with code {r.imdb_code} has score {r.imdb_score}")
+        app_log.trace("Search successfull: keyword: {}, {:,} results".format(keyword, len(results)))
     except requests.exceptions.ConnectionError:
-        print("ERROR: Could not find server. Check your network connection.")
+        msg = "Could not find server. Check your network connection."
+        print("ERROR: " + msg)
+        app_log.warn(msg)
     except ValueError:
-        print("ERROR: You must specify a search term.")
+        msg = "You must specify a search term."
+        print("ERROR: " + msg)
+        app_log.warn(msg)
     except Exception as x:
-        print("Oh that didn't work!: {}".format(x))
+        msg = "Oh that didn't work!: {}".format(x)
+        print(msg)
+        app_log.exception(x)
 
 def init_logging(filename: str = None):
     level = logbook.TRACE

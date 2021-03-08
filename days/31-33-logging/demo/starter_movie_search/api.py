@@ -1,12 +1,13 @@
 from typing import List
 
+import logbook
 import requests
 import collections
 import random
 
 Movie = collections.namedtuple('Movie', 'imdb_code, title, director, keywords, '
                                         'duration, genres, rating, year, imdb_score')
-
+api_log = logbook.Logger('API')
 
 def find_movie_by_title(keyword: str) -> List[Movie]:
     if not keyword or not keyword.strip():

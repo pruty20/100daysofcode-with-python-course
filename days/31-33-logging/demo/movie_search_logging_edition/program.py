@@ -6,7 +6,6 @@ import requests.exceptions
 
 app_log = logbook.Logger('App')
 
-
 def main():
     keyword = input('Keyword of title search: ')
     try:
@@ -15,7 +14,6 @@ def main():
         print(f'There are {len(results)} movies found.')
         for r in results:
             print(f"{r.title} with code {r.imdb_code} has score {r.imdb_score}")
-
         app_log.trace('Search successful: keyword: {}, {:,} results.'.format(
             keyword, len(results)))
     except requests.exceptions.ConnectionError:
@@ -45,7 +43,7 @@ def init_logging(filename: str = None):
         "stdout mode" if not filename else 'file mode: ' + filename
     )
     logger = logbook.Logger('Startup')
-    logger.notice(msg)
+    logger.notice(msg)§
 
 
 if __name__ == '__main__':
